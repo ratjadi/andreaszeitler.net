@@ -1,0 +1,1 @@
+All content and pictures copyright <?php echo date("Y"); ?> by Andreas Zeitler

@@ -1,0 +1,210 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Clear margins and paddings for various tags */
+* {
+	margin:0;
+	padding:0;
+}
+
+h1,h2,h3 {
+	padding:0px;
+	margin-top:0px;
+}
+
+#header, #container, #mainmenu, ul.menu {
+	margin:0px;
+	padding:0px;
+}
+/* ------------------------------------------- */
+
+#page_bg {
+	margin:0;
+	padding:0;
+}
+
+body {
+	background-color:#555;
+	color:White;
+	font-family:Tahoma, Arial, Helvetica, sans-serif;
+}
+
+a {color:Lightgrey; border:0px;}
+a:link {color:Lightgrey;border:0px;}
+a:visited {color:Lightgrey;border:0px;}
+ul.menu a:hover {color:Goldenrod;border:0px;}
+
+/* --------------------------------------------------------------------------- */
+/* CONTAINER (is the all surrounding container)
+/* --------------------------------------------------------------------------- */
+
+
+#container {
+	width:66%;
+	min-width:900px;
+	margin:0 auto; /* auto centers the container */
+	background-color:#333;
+	min-height:600px;
+	}
+	
+
+/* --------------------------------------------------------------------------- */
+/* HEADER 
+/* --------------------------------------------------------------------------- */
+
+#header {
+	background-image:url('../graphics/header.jpg');
+	background-repeat:no-repeat;
+	/*border:1px solid black;*/
+	width:792px;
+	height:190px;
+	}
+	
+	
+
+/* --------------------------------------------------------------------------- */
+/* MAINMENU (contains only the mainmenu module)
+/* --------------------------------------------------------------------------- */
+
+#mainmenu {
+	background-color:#444;
+	width:100%;
+	overflow:hidden;
+	}
+
+#mainmenu ul {
+	list-style:none;
+}
+
+#mainmenu li {
+	list-style:none;
+	display:block;
+	float:left;
+	margin:0 4px;
+}
+
+#mainmenu li a{
+	display:block;
+	float:left;
+}
+
+#mainmenu li a:hover{
+}
+
+#mainmenu li a span{
+	display:none;
+}
+
+#mainmenu li a.current{
+	display:block;
+	float:left;
+	color:#fff;
+	background:#da6800 url(../graphics/menu_039_h.gif) repeat-x left;
+	font-size:11px;
+	font-weight:bold;
+	line-height:66px;
+	text-decoration:none;
+	padding:0 25px;	
+}
+
+#mainmenu li a:hover.current{
+	color:#fff;
+}
+
+#mainmenu li a.home{
+	background:url(../graphics/home.jpg) no-repeat;
+	width:130px;
+	height:49px;
+}
+
+#mainmenu li a:hover.home{
+	background:url(../graphics/home_h.jpg) no-repeat;
+}
+
+#mainmenu li a.about{
+	background:url(../graphics/about.jpg) no-repeat;
+	width:131px;
+	height:57px;
+}
+
+#mainmenu li a:hover.about{
+	background:url(../graphics/about_h.jpg) no-repeat;
+}
+
+#mainmenu li a.works{
+	background:url(../graphics/works.jpg) no-repeat;
+	width:131px;
+	height:50px;
+}
+
+#mainmenu li a:hover.works{
+	background:url(../graphics/works_h.jpg) no-repeat;
+}
+
+#mainmenu li a.hire{
+	background:url(../graphics/hire.jpg) no-repeat;
+	width:131px;
+	height:57px;
+}
+
+#mainmenu li a:hover.hire{
+	background:url(../graphics/hire_h.jpg) no-repeat;
+}
+
+#mainmenu li a.contact{
+	background:url(../graphics/contact.jpg) no-repeat;
+	width:130px;
+	height:56px;
+}
+
+#mainmenu li a:hover.contact{
+	background:url(../graphics/contact_h.jpg) no-repeat;
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* LEFT (contains left navigation or infos)
+/* --------------------------------------------------------------------------- */
+
+#left {
+	margin: 10px;
+	float:left;
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* LEFT MENU (contains only the pictures module)
+/* --------------------------------------------------------------------------- */
+
+	
+
+
+
+	
+/* --------------------------------------------------------------------------- */
+/* MAINCONTENT
+/* --------------------------------------------------------------------------- */
+
+	
+#maincontent {
+	margin:10px 10px 10px 10px;
+	}
+
+	
+#content a {color:Lightgrey;font-weight:bold};
+#content a:link {color:Lightgrey;text-decoration:underline;}
+#content a:visited {color:Lightgrey;text-decoration:underline;}
+#content a:hover {color:Goldenrod;text-decoration:none;}	
+
+
+/* --------------------------------------------------------------------------- */
+/* FOOTER
+/* --------------------------------------------------------------------------- */
+
+	
+#footer {
+	clear:left;
+	font-size: 80%;	
+	text-align:center;
+	}
+

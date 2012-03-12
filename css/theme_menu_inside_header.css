@@ -1,0 +1,584 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Clear margins and paddings for various tags */
+* {
+	margin:0;
+	padding:0;
+}
+
+
+h1,h2,h3 {
+	padding:0px;
+	margin-top:0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	margin-bottom: 12px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	color: #CCCCCC;
+	letter-spacing: 2px;
+}
+
+#header, #container, #mainmenu, ul.menu {
+	margin:0px;
+	padding:0px;
+}
+
+/* ------------------------------------------- */
+
+#page_bg {
+	margin:0;
+	padding:0;
+	// background-image: url('../images/bg-background.jpg');
+}
+
+body {
+	background-color:#CCCCCC;
+	color:#666666;
+	font-family:Tahoma, Arial, Helvetica, sans-serif;
+}
+
+body {
+overflow: scroll;
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* LINKS
+/* --------------------------------------------------------------------------- */
+
+#maincontent a {
+	color: #000000;
+	position: relative;
+	overflow: hidden;
+	/* line-height: 3px; */
+	
+	margin: 2px;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 8px;
+
+	text-decoration: underline;
+	letter-spacing: 2px;
+	
+	background-color: none;
+	}
+	
+#maincontent a:link {
+
+	}
+	
+#maincontent a:visited {
+	color: #000000;
+	}
+	
+#maincontent a:hover {
+	top: -2px;
+	/* vertical-align: top; */
+	text-decoration: none;
+	border-bottom: 2px solid red;
+	}
+	
+/* --------------------------------------------------------------------------- */
+/* CONTAINER (is the all surrounding container)
+/* --------------------------------------------------------------------------- */
+
+
+#container {
+	width:900px;
+	margin:0 auto; /* auto centers the container */
+	background-color:#FFFFFF;
+	/*min-height:400px;*/
+	}
+	
+
+/* --------------------------------------------------------------------------- */
+/* HEADER 
+/* --------------------------------------------------------------------------- */
+
+#header {
+	position:relative;
+	background-image:url('../images/header_plain.jpg');
+	background-repeat:no-repeat;
+	/*border:1px solid black;*/
+	width:900px;
+	height:182px;
+	background-position: top center;
+	}
+
+#homelink {
+	min-height:100px;
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* MAINSELECTOR (big buttons for main selection on startpage - portfolio, revue...)
+/* --------------------------------------------------------------------------- */
+
+#mainselector-wrapper {
+	margin:0px;
+	padding:0px;
+}
+
+#mainselector-wrapper  a {
+	text-decoration:none;
+}
+
+#mainselector-wrapper a:hover {
+	top:0px;
+}
+
+#mainselector {
+	padding:10px 20px 10px 20px;
+	margin: 0px 30px 30px 0px;
+	width:620px;
+	height:auto;
+	min-height:150px;
+	float:left;
+	border: 2px solid #CCC;
+}
+
+#mainselector img {
+	border: 0;
+	float:right;
+	margin-left:10px;
+	margin-bottom:10px;
+}
+
+#mainselector:hover {
+	border: 2px solid red;
+}
+
+#mainselector a:hover {
+	top: 0px;
+	text-decoration:none;
+	border-bottom:0px;
+}
+
+/* --------------------------------------------------------------------------- */
+/* KONTAKT (contains only the kontakt link)
+/* --------------------------------------------------------------------------- */
+
+#kontakt {
+	position:absolute;
+	height:81px;
+	background-color:transparent;
+	left:887px;
+	top:5px;
+}
+
+#kontakt li {
+	white-space:nowrap;	
+	list-style:none;
+	display:block;
+	float:left;
+}
+
+#kontakt li a{
+	display:block;
+}
+
+#kontakt li a.kontakt {
+	background:url(../images/fix_kontakt.png) no-repeat top left;
+	width:38px;
+	height:81px;
+}
+
+#kontakt li a:hover.kontakt {
+	background:url(../images/fix_kontakt_h.png) no-repeat top left;
+}
+
+#kontakt li a span {
+	display:none;
+}
+
+/* --------------------------------------------------------------------------- */
+/* AlbumMENU
+/* --------------------------------------------------------------------------- */
+
+	
+#albummenu ul {
+	margin-top:1em;   /* Anpassung and wordpress stylesheet */
+	margin-bottom:2em;
+	padding:0 0 5px 0;
+}
+
+#albummenu ul li {
+	/*border-right:1px solid #333333;*/
+	white-space:nowrap;	
+	list-style:none;
+	display:block;
+	float:left;
+	margin:0 16px 0 0; /* top right bottom left */
+}
+
+#albummenu ul li a{
+	display:block;
+	float:left;
+	border: none;
+	top: 0px;
+}
+
+#albummenu a:hover {
+	top: 0px;
+	bottom: 0px;
+}
+
+#albummenu li a span{
+	display:none;
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* MAINMENU (contains only the mainmenu module)
+/* --------------------------------------------------------------------------- */
+
+#mainmenu {
+	position:absolute;
+	background-color:transparent;
+	width:100%;
+	bottom:30px;
+	height:38px;
+	}
+	
+#mainmenu ul {
+	margin-top:1em;   /* Anpassung and wordpress stylesheet */
+	margin-bottom:1em;
+	padding:0 0 0 20px;
+}
+
+#mainmenu li {
+	/*border-right:1px solid #333333;*/
+	white-space:nowrap;	
+	list-style:none;
+	display:block;
+	float:left;
+	margin:0 16px 0 0; /* top right bottom left */
+}
+
+#mainmenu li a{
+	display:block;
+	float:left;
+	border: none;
+	top: 0px;
+}
+
+#mainmenu li a:hover{
+}
+
+#mainmenu li a span{
+	display:none;
+}
+
+#mainmenu li a.current{
+	display:block;
+	float:left;
+	color:#fff;
+	background:#da6800 url(../graphics/menu_039_h.gif) repeat-x left;
+	font-size:11px;
+	font-weight:bold;
+	line-height:66px;
+	text-decoration:none;
+	padding:0 25px;	
+}
+
+#mainmenu li a:hover.current{
+	color:#fff;
+}
+
+
+#mainmenu li a.home{
+	background:url(../images/menu_gazette.png) no-repeat top left;
+	width:81px;
+	height:38px;
+}
+
+#mainmenu li a:hover.home{
+	background:url(../images/menu_gazette_h.png) no-repeat top left;
+}
+
+#mainmenu li a.portfolio{
+	background:url(../images/menu_portfolio.png) no-repeat top left;
+	width:98px;
+	height:38px;
+}
+
+#mainmenu li a:hover.portfolio{
+	background:url(../images/menu_portfolio_h.png) no-repeat top left;
+}
+
+#mainmenu li a.leistungen{
+	background:url(../images/menu_leistungen.png) no-repeat top left;
+	width:107px;
+	height:38px;
+}
+
+#mainmenu li a:hover.leistungen{
+	background:url(../images/menu_leistungen_h.png) no-repeat top left;
+}
+
+#mainmenu li a.portrait{
+	background:url(../images/menu_portrait.png) no-repeat top left;
+	width:85px;
+	height:38px;
+}
+
+#mainmenu li a:hover.portrait{
+	background:url(../images/menu_portrait_h.png) no-repeat top left;
+}
+
+#mainmenu li a.panoptikum{
+	background:url(../images/menu_panoptikum.png) no-repeat top left;
+	width:124px;
+	height:38px;
+}
+
+#mainmenu li a:hover.panoptikum{
+	background:url(../images/menu_panoptikum_h.png) no-repeat top left;
+}
+
+
+#mainmenu li a.kontakt{
+	background:url(../images/menu_kontakt.png) no-repeat top left;
+	width:81px;
+	height:38px;
+}
+
+#mainmenu li a:hover.kontakt{
+	background:url(../images/menu_kontakt_h.png) no-repeat top left;
+}
+
+#mainmenu li a.login{
+	background:url(../images/menu_login.png) no-repeat top left;
+	width:81px;
+	height:38px;
+}
+
+#mainmenu li a:hover.login{
+	background:url(../images/menu_login_h.png) no-repeat top left;
+}
+
+
+
+
+/* --------------------------------------------------------------------------- */
+/* LEFT (contains left navigation or infos)
+/* --------------------------------------------------------------------------- */
+
+#left {
+	margin: 10px;
+	float:left;
+	/*visibility: hidden;*/
+	display: none;
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* LEFT MENU (contains only the pictures module)
+/* --------------------------------------------------------------------------- */
+
+	
+
+
+
+	
+/* --------------------------------------------------------------------------- */
+/* MAINCONTENT
+/* --------------------------------------------------------------------------- */
+
+	
+#maincontent {
+	min-height: 300px;
+	margin:20px 20px 10px 20px;
+	}
+
+		
+/* --------------------------------------------------------------------------- */
+/* DETAILSEITEN
+/* --------------------------------------------------------------------------- */
+
+#journal {
+	/* width: 520px; */
+	padding-right: 120px
+	}
+
+#journalentrytitel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: lighter;
+	text-transform: none;
+	color: #333;
+
+	padding-bottom: 9px;
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 3px;
+	background-image: url(../images/underline_1.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	}
+		
+#journalentrydate {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #fff;
+	background-color: #CCCCCC;
+	border-width: 3 px;
+	border-style: double;
+	float: left;
+	margin-right: 8px;
+	padding: 3px;
+	padding-top: 1px;
+	padding-bottom: 0px;
+	margin-top: 2px;
+	font-weight: bolder;
+	}
+	
+#journalpic {
+	border: 2px solid black;
+	
+	position: relative;
+	right: 0px;
+	float: right;
+	
+	/*margin-left: -80px;*/
+	margin-bottom: 20px;
+	margin-top: 5px;
+	}
+
+
+/* --------------------------------------------------------------------------- */
+/* FOOTER
+/* --------------------------------------------------------------------------- */
+
+	
+#footer {
+	position:relative;
+	clear:both;
+	font-size: 80%;	
+	text-align:center;
+	background-color:#DDD;
+	color:#333;
+	padding:10px 20px 5px 20px;
+	margin:50px 0px 0px 0px;
+	}
+
+
+
+
+
+/* --------------------------------------------------------------------------- */
+/* AIRY Album
+/* --------------------------------------------------------------------------- */
+
+#airy_album_header.level1 {
+	clear:left;
+	background:transparent;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: lighter;
+	text-transform: none;
+	color: #333;
+	padding-bottom: 9px;
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 3px;
+	background-image: url(../images/underline_1.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	}
+	
+#airy_album_header.level2 {
+	clear:left;
+	padding-top:30px;
+	margin-top:0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	margin-bottom: 0px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	color: #CCCCCC;
+	letter-spacing: 2px;
+}
+
+#airy_album_teaser.level1 {
+	clear:both;
+	margin-top:10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	margin-bottom: 0px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	color: #CCCCCC;
+	letter-spacing: 2px;
+}
+
+#airy_album_beschreibung.level2 {
+	padding-bottom: 15px;
+}
+
+#airy_album_teaser.level2 {
+	padding-bottom: 15px;
+}
+
+#gallery-2 img {
+	background:#FFF;
+	margin:5px 5px 0px 0px; /* top right bottom left */
+	padding: 4px;
+}
+
+#gallery-2 img:hover {
+	padding: 4px;
+	background:#DDD;
+}
+
+#airy_album_spacer {
+	clear:both;
+	margin-bottom:15px;
+}
+			
+#gallery-2 {
+	/*margin: auto;*/
+	margin-bottom:30px;
+	/*padding-right:30px;*/
+}
+#gallery-2 .gallery-item {
+	float: left;
+	margin-top: 20px;
+	width: 25%;			}			
+#gallery-2 .unmarkiert {
+	border: 2px solid #cfcfcf;
+}
+#gallery-2 .markiert {
+	border: 2px solid #ff0000;
+}
+#gallery-2 .gallery-caption {
+	margin-left: 0;
+}
+			
+#gallery-2 .gallery-item a:hover {
+	top: 0px;
+	border-bottom: 0px;
+}
+
+/* Galerie für plain-Ansicht */
+#gallery-3 a:hover {
+	top: 0px;
+	border-bottom: 0px;
+}
+
+#gallery-3 a img {
+	background:#FFF;
+	margin:5px 5px 0px 0px; /* top right bottom left */
+	padding: 4px;
+}
+
+#gallery-3 a img:hover {
+	padding: 4px;
+	background:#DDD;
+}
+
+#gallery-3 a .unmarkiert {
+	border: 2px solid #cfcfcf;
+}
