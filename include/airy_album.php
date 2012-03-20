@@ -737,7 +737,8 @@ class airy_album_portfolio_extended extends airy_album_verzeichnis {
 								$html .=<<<EOT
 							<dt class='gallery-icon'> 
 							<dl class='gallery-item'> 
-								<a href="$bildpfad_ganz" title="{$el["bild_titel"]}" alt="{$el["bild_beschreibung"]}" beschreibung="{$el["bild_beschreibung"]}" nummer="$bildcount"><img class="$sel" src="$thumbpfad_ganz" boder="0"></a>
+								<a href="$bildpfad_ganz"  beschreibung="{$el["bild_beschreibung"]}" nummer="$bildcount">
+								<img title="{$el["bild_titel"]}" alt="{$el["bild_beschreibung"]}" class="$sel" src="$thumbpfad_ganz" boder="0"></a>
 								</dl>
 	
 							</dt>
