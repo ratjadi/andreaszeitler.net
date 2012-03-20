@@ -14,7 +14,8 @@
 	<script type="text/javascript" src="include/lightbox/js/prototype.js"></script>
 	<script type="text/javascript" src="include/lightbox/js/scriptaculous.js?load=effects,builder"></script>
 	<script type="text/javascript" src="include/lightbox/js/lightbox.js"></script>
-<!--	<script type="text/javascript" src="include/airy_album.js"></script> -->
+	<script type="text/javascript" src="include/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="include/galleria/galleria-1.2.6.min.js"></script>
 	<script type="text/javascript" src="include/functions.js"></script>
 	<link rel="stylesheet" href="include/lightbox/css/lightbox.css" type="text/css" media="screen" />
 

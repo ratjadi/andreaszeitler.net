@@ -435,8 +435,8 @@ _debug_1 ($element['basis_verzeichnis']);
 			$xml_obj = new xmlToArrayParser(file_get_contents($this->basis_verzeichnis . 'airy_info.xml'));
 			$xml_array = $xml_obj->array;
 			$this->album_titel = nl2br(htmlentities($xml_array["top"]["titel"],ENT_COMPAT,"UTF-8"));
-			$this->album_teaser = nl2br(htmlentities($xml_array["top"]["teaser"],ENT_COMPAT,"UTF-8"));
-			$this->album_beschreibung = nl2br(htmlentities($xml_array["top"]["beschreibung"],ENT_COMPAT,"UTF-8"));
+			$this->album_teaser = !empty($xml_array["top"]["teaser"]) ? nl2br(($xml_array["top"]["teaser"])) : '';
+			$this->album_beschreibung = !empty($xml_array["top"]["beschreibung"]) ? nl2br(($xml_array["top"]["beschreibung"])) : '';
 			$this->album_menu_name = nl2br(htmlentities($xml_array["top"]["menu_name"],ENT_COMPAT,"UTF-8"));
 		}
 		else {
@@ -712,6 +712,7 @@ class airy_album_portfolio_extended extends airy_album_verzeichnis {
 	public function get_html ($param_list=array()) {
 		$html = '';
 		$group = 1; // für die lightbox
+		$bildcount = 0;
 		$first = true;
 	//	$html .= print_r($this->album_liste);
 
@@ -736,11 +737,12 @@ class airy_album_portfolio_extended extends airy_album_verzeichnis {
 								$html .=<<<EOT
 							<dt class='gallery-icon'> 
 							<dl class='gallery-item'> 
-								<a rel="lightbox[$group]" href="$bildpfad_ganz" title="{$el["bild_titel"]}" beschreibung="{$el["bild_beschreibung"]}"><img class="$sel" src="$thumbpfad_ganz" boder="0"></a>
+								<a href="$bildpfad_ganz" title="{$el["bild_titel"]}" alt="{$el["bild_beschreibung"]}" beschreibung="{$el["bild_beschreibung"]}" nummer="$bildcount"><img class="$sel" src="$thumbpfad_ganz" boder="0"></a>
 								</dl>
 	
 							</dt>
 EOT;
+							$bildcount++;
 							//}
 							break;
 					

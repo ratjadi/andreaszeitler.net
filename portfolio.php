@@ -1,8 +1,8 @@
 <?php 
 	include "codeheader.php"; 
 	include $incdir . "htmlheader.php"; 
-?>
 
+?>
 
 <body id="page_bg">
 
@@ -77,6 +77,26 @@ FLA;
 													echo $html; // str_replace(pack("C",0x00),"",$html);
 			
 												?>
+        <script>
+
+        	$(document).ready(function() { 
+	        	Galleria.loadTheme('include/galleria/themes/classicfullscreen/galleria.classicfullscreen.js');
+	        	$("#gallery-2 a").click(function () {
+	        		bildnummer = $(this).attr('nummer');
+					
+					gallery_clone = $('#gallery-2').clone();
+					gallery_clone.attr('id', 'fullscreen-gallery');
+					gallery_clone.appendTo('body'); // ('<div id="fullscreen-gallery"></div>');
+		            $("#fullscreen-gallery").galleria({
+		                width: 'auto',
+		                height: 700,
+		                show: bildnummer
+		            });
+		            	            
+		            return(false);
+				});
+			});
+        </script>												
 										    </div>
 										
 	<div id="footer">
