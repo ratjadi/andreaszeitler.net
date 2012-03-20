@@ -3,6 +3,8 @@
 	include $incdir . "htmlheader.php"; 
 
 ?>
+	<script type="text/javascript" src="include/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="include/galleria/galleria-1.2.6.min.js"></script>
 
 <body id="page_bg">
 

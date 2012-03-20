@@ -823,8 +823,6 @@ class airy_album_portfolio extends airy_album_verzeichnis {
 				
 						// Alle Bilder aller Alben werden angezeigt (aufgeklappt)
 							$sel = "unmarkiert";
-							if ($el["bild_titel"] != "")
-								$sel = "markiert";
 							
 							$bildpfad_ganz = $el['bild'];
 							$thumbpfad_ganz = $el['thumbpfad_ganz']. $el["thumbnail"];
@@ -1164,7 +1162,7 @@ EOT;
 //  HINWEIS: nach get_menu muss vor get_html ein reset_album() gemacht werden, denn der Zeiger steht sonst am Ende.
 // -----------------------------------------------------------------------------------
 
-class airy_album_showcase extends airy_album_portfolio_extended {
+class airy_album_showcase extends airy_album_portfolio {
 
 	public function get_menu ($param_list=array()) {
 		$html = '';
