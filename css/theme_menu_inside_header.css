@@ -582,3 +582,12 @@ overflow: scroll;
 #gallery-3 a .unmarkiert {
 	border: 2px solid #cfcfcf;
 }
+
+#tooltip{
+	position:absolute;
+	border:1px solid #333;
+	background:#CCC;
+	padding:2px 5px;
+	color:#333;
+	display:none;
+	}

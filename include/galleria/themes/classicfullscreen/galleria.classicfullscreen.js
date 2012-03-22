@@ -29,13 +29,19 @@ Galleria.addTheme({
     init: function(options) {
 
         // add some elements
-        this.addElement('info-link','info-close', 'fullscreen-close');
+        this.addElement('info-link','info-close', 'fullscreen-close', 'image-nav-left-arrow', 'image-nav-right-arrow');
         this.append({
             'info' : ['info-link','info-close']
         });
         this.append({
             'stage' : ['fullscreen-close']
         });
+        this.append({
+            'image-nav-left' : ['image-nav-left-arrow']
+        });
+        this.append({
+            'image-nav-right' : ['image-nav-right-arrow']
+        });		
 
         // cache some stuff
         var info = this.$('info-link,info-close,info-text'),
@@ -102,11 +108,13 @@ Galleria.addTheme({
 					var e = jQuery.Event( 'keydown', { which: 27, keyCode: 27 } ); // Simulate ESC Key
 					$('body').trigger(e);				
 				});
+			this.$('image-nav-left-arrow').attr('title', 'hint: left right keys');
+			this.$('image-nav-left-arrow').addClass('tooltip');
+			this.$('image-nav-right-arrow').attr('title', 'hint: left right keys');
+			this.$('image-nav-right-arrow').addClass('tooltip');
+				
         });
 
-        this.bind('fullscreen_exit', function(e) {
-        	$('#fullscreen-gallery').remove();
-        });
 
         this.enterFullscreen();
     }
