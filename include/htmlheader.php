@@ -9,19 +9,16 @@
   <title>Andreas Zeitler Fotografie</title>
   <link rel="stylesheet" type="text/css" href="css/theme_menu_inside_header.css"/>
 
-
-
-	<script type="text/javascript" src="include/lightbox/js/prototype.js"></script>
-	<script type="text/javascript" src="include/lightbox/js/scriptaculous.js?load=effects,builder"></script>
-	<script type="text/javascript" src="include/lightbox/js/lightbox.js"></script>
-
 	<script type="text/javascript" src="include/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="include/functions.js"></script>
 	<script type="text/javascript" src="include/galleria/galleria-1.2.6.min.js"></script>
-	<script type="text/javascript" src="include/tooltip/main.js"></script>
-	<link rel="stylesheet" href="include/lightbox/css/lightbox.css" type="text/css" media="screen" />
 	
+	<script type="text/javascript" src="include/lightbox/js/jquery.lightbox-0.5.js"></script>
+	<link rel="stylesheet" type="text/css" href="include/lightbox/css/jquery.lightbox-0.5.css" media="screen" />
 
+	<script type="text/javascript">
+		$(document).ready(function() {azDocumentReady();});
+	</script>
 <!--[if lte IE 6]>
 <link href="css/ieonly.css" rel="stylesheet" type="text/css" />
 <![endif]-->

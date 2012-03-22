@@ -1,9 +1,17 @@
+
 <?php 
 	include "codeheader.php"; 
 	include $incdir . "htmlheader.php"; 
 ?>
 
+	<script type="text/javascript">
+		function azDocumentReady () { 
+			//$('a[rel*=lightbox]').lightBox();
+			$("#gallery-2 a").lightBox();
+		}
+	</script>
 
+	
 <body id="page_bg">
 
 <div id="container">
@@ -66,6 +74,7 @@ FLA;
 		<?php include "footer.php" ?>
     </div>
 
+	</script>
 
 </div>
 
