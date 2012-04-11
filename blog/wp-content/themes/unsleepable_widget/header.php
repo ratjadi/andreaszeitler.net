@@ -25,11 +25,6 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php } ?>
 	
-<?php if ( get_option('k2livesearch') == 0 or get_option('k2livecommenting') == 0 and is_single() or !is_user_logged_in() && $comment_author != $_COOKIE['comment_author_'.COOKIEHASH] ) { ?>
-	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/prototype.js.php"></script>
-	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/effects.js.php"></script>
-<?php } ?>
-	
 <?php if(!is_user_logged_in() && is_single() && ($comment_author != $_COOKIE['comment_author_'.COOKIEHASH]) and ('open' == $post-> comment_status) or ('comment' == $post-> comment_type) ) { ?>
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/k2functions.js"></script>
 <?php } ?>
@@ -64,11 +59,18 @@
 	<?php wp_head(); ?>
 
 	<?php /* Sets Matt's asides in motion */ function stupid_hack($str) { return preg_replace('|</ul>s*<ul class="asides">|', '', $str); } ob_start('stupid_hack'); ?>
+
+	<script type="text/javascript">
+		lightboxJBase = "../../../../";
+	</script>	
 	
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="../../../../include/lightbox/js/jquery.lightbox-0.5.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../../../include/lightbox/css/jquery.lightbox-0.5.css" media="screen" />
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('a:has(img)').addClass('azimg');
+			$('a[rel*=lightbox]').lightBox();
 		});
 	</script>	
 	

@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="include/lightbox/css/jquery.lightbox-0.5.css" media="screen" />
 
 	<script type="text/javascript">
+		lightboxJBase = '';
 		$(document).ready(function() {azDocumentReady();});
 	</script>
 <!--[if lte IE 6]>
