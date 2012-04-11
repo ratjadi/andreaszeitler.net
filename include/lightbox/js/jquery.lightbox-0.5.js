@@ -80,7 +80,17 @@
 				// Add an Array (as many as we have), with href and title atributes, inside the Array that storage the images references		
 				for ( var i = 0; i < jQueryMatchedObj.length; i++ ) {
 					// Änderung Andreas Zeitler: alt-text auslesen
-					settings.imageArray.push(new Array(jQueryMatchedObj[i].getAttribute('href'),jQueryMatchedObj[i].getAttribute('title'),jQueryMatchedObj[i].getAttribute('alt')));
+					if (jQueryMatchedObj[i].getAttribute('title') == null) 	tmpobj = $(jQueryMatchedObj[i]).find('img').first();
+					else 													tmpobj = $(jQueryMatchedObj[i]);
+					title = tmpobj.attr('title');
+					alt = tmpobj.attr('alt');
+					
+					 // console.log('=============================================');
+					 // console.log(tmpobj);
+					 // console.log(title);
+					 // console.log(alt);
+					 // console.log('=============================================');
+					settings.imageArray.push(new Array(jQueryMatchedObj[i].getAttribute('href'),title,alt));
 				}
 			}
 			while ( settings.imageArray[settings.activeImage][0] != objClicked.getAttribute('href') ) {
