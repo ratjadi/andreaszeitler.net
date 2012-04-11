@@ -48,11 +48,15 @@
 		}
 	//]]></script>
 <?php } elseif  ( !is_user_logged_in() && is_single() && ($comment_author = $_COOKIE['comment_author_'.COOKIEHASH]) and ('open' == $post-> comment_status) or ('comment' == $post-> comment_type) ) { ?>
+
 	<script type="text/javascript">//<![CDATA[
 		window.onload=function() {
 		HideUtils();
 		}
 	//]]></script>
+	
+	
+
 <?php } ?>
 
 <?php wp_get_archives('type=monthly&format=link'); ?>
@@ -60,7 +64,14 @@
 	<?php wp_head(); ?>
 
 	<?php /* Sets Matt's asides in motion */ function stupid_hack($str) { return preg_replace('|</ul>s*<ul class="asides">|', '', $str); } ob_start('stupid_hack'); ?>
-
+	
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a:has(img)').addClass('azimg');
+		});
+	</script>	
+	
 </head>
 
 
