@@ -74,8 +74,13 @@
 			settings.activeImage = 0;
 			// We have an image set? Or just an image? Let´s see it.
 			if ( jQueryMatchedObj.length == 1 ) {
-				settings.imageArray.push(new Array(objClicked.getAttribute('href'),objClicked.getAttribute('title')));
-				settings.imageArray.push(new Array(objClicked.getAttribute('href'),objClicked.getAttribute('alt')));
+				if (objClicked.getAttribute('title') == null) 	tmpobj = $(objClicked).find('img').first();
+				else 													tmpobj = $(objClicked);
+				title = tmpobj.attr('title');
+				alt = tmpobj.attr('alt');
+
+				settings.imageArray.push(new Array(objClicked.getAttribute('href'),title));
+				settings.imageArray.push(new Array(objClicked.getAttribute('href'),alt));
 			} else {
 				// Add an Array (as many as we have), with href and title atributes, inside the Array that storage the images references		
 				for ( var i = 0; i < jQueryMatchedObj.length; i++ ) {
