@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 // Test change for git
 function debug($texto){
 	file_put_contents(TEMPLATEPATH.'/log.log',date('d/m/Y H:i:s').' - '.$texto."\n",FILE_APPEND);
@@ -28,7 +28,7 @@ if ( function_exists('register_sidebar') )
         'after_title' => '</h2>',
     ));
 
-// Änderung Andeas Zeitler 03.09.2010 00:29
+// Ã„nderung Andeas Zeitler 03.09.2010 00:29
 // add more link to excerpt
 function new_excerpt_more($more) {
        global $post;
@@ -37,8 +37,8 @@ function new_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-// Änderung Andeas Zeitler 03.01.2011 22:43
-// Neuer shortcode für caption
+// Ã„nderung Andeas Zeitler 03.01.2011 22:43
+// Neuer shortcode fÃ¼r caption
 
 
 /**
@@ -98,8 +98,8 @@ add_shortcode('wp_caption', 'az_img_caption_shortcode');
 add_shortcode('caption', 'az_img_caption_shortcode');
 
 
-// Änderung Andeas Zeitler 22.01.2011 15:00
-// Filter neuen post um Windows Live Writer Dreck - inline styles für images wegzuräumen
+// Ã„nderung Andeas Zeitler 22.01.2011 15:00
+// Filter neuen post um Windows Live Writer Dreck - inline styles fÃ¼r images wegzurÃ¤umen
 
 // WICHTIG: debug Ausgaben verursachen eine Fehlermeldung im Live Writer, weil die response dadurch vermurxt wird!
 // WICHTIG: wegen des Filters funktioniert die Designerkennung in LiveWriter nicht, ggf. also den hook deaktivieren
@@ -109,30 +109,30 @@ function filters_rpc_post( $data , $postarr )
 {
 		//return($data); // debug
 	
-	// finde das style="margin: 5px 0px 8px 10px; display: inline; float: right" Attribut beim img o.ä., das der Live Writer
-	// aus dem CSS des themes generiert und lösche es. 	
-	// das Suchmuster \\\" findet \" im post_content, Anführungsszeichen sind dort nämlich schon escaped
-	// das U am Ende des Suchmusters, nach dem delimiter macht die Suche ungreedy, damit beim nächsten \" aufgehört wird, sonst löscht
+	// finde das style="margin: 5px 0px 8px 10px; display: inline; float: right" Attribut beim img o.Ã¤., das der Live Writer
+	// aus dem CSS des themes generiert und lÃ¶sche es. 	
+	// das Suchmuster \\\" findet \" im post_content, AnfÃ¼hrungsszeichen sind dort nÃ¤mlich schon escaped
+	// das U am Ende des Suchmusters, nach dem delimiter macht die Suche ungreedy, damit beim nÃ¤chsten \" aufgehÃ¶rt wird, sonst lÃ¶scht
 	// die Anfrage alles bis zum letzten \" des post_contents
   $data['post_content'] = preg_replace('/img style=\\\"(.*)\"/U', 'img ', $data['post_content']);
   
 	 // hspace von Blogdesk entfernen
 	 $data['post_content'] = preg_replace('/hspace=\\\"0\\\"/', ' ', $data['post_content']);
 	 $data['post_content'] = preg_replace('/border=\\\"0\\\"/', ' ', $data['post_content']);
- 	// Falls azimg und lightbox schon da sind, vorher löschen (doppelte vermeiden)
+ 	// Falls azimg und lightbox schon da sind, vorher lÃ¶schen (doppelte vermeiden)
 	 $data['post_content'] = preg_replace('/class=\\\"azimg\\\"/', ' ', $data['post_content']);
 	 $data['post_content'] = preg_replace('/rel=\\\"lightbox\[1\]\\\"/', ' ', $data['post_content']);
 
-	// class="azimg" und rel="lightbox[1]" einhängen, damit Bilder nicht um 2px raufspringen, wie die anderen links
-	// zwischen <a und .jpg darf kein close oder open tag < > vorkommen, sonst findet er .jpg weiter unten, das gar nicht zu dem <a tag gehört
-	// d.h. es würden auch <a links, die kein img beinhten die Klasse azimg bekommen
- 	$data['post_content'] = preg_replace('§(<a)([^>]+)(\.jpg)§U', '<a class=\"azimg\" rel=\"lightbox[1]\" ${2}${3}', $data['post_content']);
+	// class="azimg" und rel="lightbox[1]" einhÃ¤ngen, damit Bilder nicht um 2px raufspringen, wie die anderen links
+	// zwischen <a und .jpg darf kein close oder open tag < > vorkommen, sonst findet er .jpg weiter unten, das gar nicht zu dem <a tag gehÃ¶rt
+	// d.h. es wÃ¼rden auch <a links, die kein img beinhten die Klasse azimg bekommen
+ 	$data['post_content'] = preg_replace('Â§(<a)([^>]+)(\.jpg)Â§U', '<a class=\"azimg\" rel=\"lightbox[1]\" ${2}${3}', $data['post_content']);
  	
  	/*$result=array();
- 	preg_match_all('§(<a)([^>]+)(\.jpg)§U', $data['post_content'], $result);
+ 	preg_match_all('Â§(<a)([^>]+)(\.jpg)Â§U', $data['post_content'], $result);
  	$deb = print_r($result, true);
  	debug($deb);
- 	preg_match_all('§(<a)([^>]+)(\.png)§U', $data['post_content'], $result);
+ 	preg_match_all('Â§(<a)([^>]+)(\.png)Â§U', $data['post_content'], $result);
  	$deb = print_r($result, true);*/
  
  
@@ -147,13 +147,13 @@ function filters_rpc_post( $data , $postarr )
 
 function filter_normal_post ( $data , $postarr )
 {
- 	// Falls azimg und lightbox schon da sind, vorher löschen (doppelte vermeiden)
+ 	// Falls azimg und lightbox schon da sind, vorher lÃ¶schen (doppelte vermeiden)
 	 $data['post_content'] = preg_replace('/class=\\\"azimg\\\"/', '', $data['post_content']);
 	 $data['post_content'] = preg_replace('/rel=\\\"lightbox\[1\]\\\"/', '', $data['post_content']);
-	// class="azimg" und rel="lightbox[1]" einhängen, damit Bilder nicht um 2px raufspringen, wie die anderen links
-	// zwischen <a und .jpg darf kein close oder open tag < > vorkommen, sonst findet er .jpg weiter unten, das gar nicht zu dem <a tag gehört
-	// d.h. es würden auch <a links, die kein img beinhten die Klasse azimg bekommen
- 	$data['post_content'] = preg_replace('§(<a)([^>]+)(\.jpg)§U', '<a class=\"azimg\" rel=\"lightbox[1]\"${2}${3}', $data['post_content']);
+	// class="azimg" und rel="lightbox[1]" einhÃ¤ngen, damit Bilder nicht um 2px raufspringen, wie die anderen links
+	// zwischen <a und .jpg darf kein close oder open tag < > vorkommen, sonst findet er .jpg weiter unten, das gar nicht zu dem <a tag gehÃ¶rt
+	// d.h. es wÃ¼rden auch <a links, die kein img beinhten die Klasse azimg bekommen
+ 	$data['post_content'] = preg_replace('Â§(<a)([^>]+)(\.jpg)Â§U', '<a class=\"azimg\" rel=\"lightbox[1]\"${2}${3}', $data['post_content']);
 	$data['post_content'] = preg_replace('/lightbox\[\]/', 'lightbox[1]', $data['post_content']);
 	return ($data);
 }
@@ -194,7 +194,7 @@ add_filter('attachment_fields_to_save', 'copy_caption');
 
 
 // Filter wird bei live writer request zur Designerkennung automatisch weggelassen
-// HINWEIS: lt. php net kann es sein, dass das Lesen vom stream nur 1x funktioniert. Dann wäre das ein Problem, weil
+// HINWEIS: lt. php net kann es sein, dass das Lesen vom stream nur 1x funktioniert. Dann wÃ¤re das ein Problem, weil
 // php://input im xmlrpc nochmal gelesen wird. Funkt auf meinem webspace aber.
 
 
