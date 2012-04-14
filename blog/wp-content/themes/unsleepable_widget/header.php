@@ -70,7 +70,8 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('a:has(img)').addClass('azimg');
-			$('a[rel*=lightbox]').lightBox();
+			//$('a[rel*=lightbox]').lightBox();
+			$('.itemtext a[href$="jpg"], .itemtext a[href$="png"], .itemtext a[href$="jpeg"]').lightBox();
 		});
 	</script>	
 	
