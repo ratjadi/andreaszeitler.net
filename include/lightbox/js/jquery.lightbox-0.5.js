@@ -42,7 +42,7 @@
 			keyToClose:				'c',		// (string) (c = close) Letter to close the jQuery lightBox interface. Beyond this letter, the letter X and the SCAPE key is used to.
 			keyToPrev:				'p',		// (string) (p = previous) Letter to show the previous image
 			keyToNext:				'n',		// (string) (n = next) Letter to show the next image.
-			// Don´t alter these variables in any way
+			// DonÂ´t alter these variables in any way
 			imageArray:				[],
 			activeImage:			0
 		},settings);
@@ -72,19 +72,18 @@
 			settings.imageArray.length = 0;
 			// Unset image active information
 			settings.activeImage = 0;
-			// We have an image set? Or just an image? Let´s see it.
+			// We have an image set? Or just an image? LetÂ´s see it.
 			if ( jQueryMatchedObj.length == 1 ) {
 				if (objClicked.getAttribute('title') == null) 	tmpobj = $(objClicked).find('img').first();
 				else 													tmpobj = $(objClicked);
 				title = tmpobj.attr('title');
 				alt = tmpobj.attr('alt');
 
-				settings.imageArray.push(new Array(objClicked.getAttribute('href'),title));
-				settings.imageArray.push(new Array(objClicked.getAttribute('href'),alt));
+				settings.imageArray.push(new Array(objClicked.getAttribute('href'),title,alt));
 			} else {
 				// Add an Array (as many as we have), with href and title atributes, inside the Array that storage the images references		
 				for ( var i = 0; i < jQueryMatchedObj.length; i++ ) {
-					// Änderung Andreas Zeitler: alt-text auslesen
+					// Ã„nderung Andreas Zeitler: alt-text auslesen
 					if (jQueryMatchedObj[i].getAttribute('title') == null) 	tmpobj = $(jQueryMatchedObj[i]).find('img').first();
 					else 													tmpobj = $(jQueryMatchedObj[i]);
 					title = tmpobj.attr('title');
@@ -128,7 +127,7 @@
 					<div id="lightbox-container-image-data">
 						<div id="lightbox-image-details">
 							<span id="lightbox-image-details-caption"></span>
-							Änderung Andreas Zeitler: neues div für alt-text (Bild-Beschreibung) hinzufügen
+							Ã„nderung Andreas Zeitler: neues div fÃ¼r alt-text (Bild-Beschreibung) hinzufÃ¼gen
 							<span id="lightbox-image-details-alt"></span>
 							<span id="lightbox-image-details-currentNumber"></span>
 						</div>
@@ -143,7 +142,7 @@
 		 *
 		 */
 		function _set_interface() {
-			// Änderung Andreas Zeitler: neues div für alt-text (Bild-Beschreibung) hinzufügen
+			// Ã„nderung Andreas Zeitler: neues div fÃ¼r alt-text (Bild-Beschreibung) hinzufÃ¼gen
 			// Apply the HTML markup into body tag
 			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div style="" id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"><span id="lightbox-image-details-caption"></span><span id="lightbox-image-details-alt"></span><span id="lightbox-image-details-currentNumber"></span></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
 			// Get page sizes
@@ -190,7 +189,7 @@
 			});
 		}
 		/**
-		 * Prepares image exibition; doing a image´s preloader to calculate it´s size
+		 * Prepares image exibition; doing a imageÂ´s preloader to calculate itÂ´s size
 		 *
 		 */
 		function _set_image_to_view() { // show the loading
@@ -216,16 +215,16 @@
 		/**
 		 * Perfomance an effect in the image container resizing it
 		 *
-		 * @param integer intImageWidth The image´s width that will be showed
-		 * @param integer intImageHeight The image´s height that will be showed
+		 * @param integer intImageWidth The imageÂ´s width that will be showed
+		 * @param integer intImageHeight The imageÂ´s height that will be showed
 		 */
 		function _resize_container_image_box(intImageWidth,intImageHeight) {
 			// Get current width and height
 			var intCurrentWidth = $('#lightbox-container-image-box').width();
 			var intCurrentHeight = $('#lightbox-container-image-box').height();
 			// Get the width and height of the selected image plus the padding
-			var intWidth = (intImageWidth + (settings.containerBorderSize * 2)); // Plus the image´s width and the left and right padding value
-			var intHeight = (intImageHeight + (settings.containerBorderSize * 2)); // Plus the image´s height and the left and right padding value
+			var intWidth = (intImageWidth + (settings.containerBorderSize * 2)); // Plus the imageÂ´s width and the left and right padding value
+			var intHeight = (intImageHeight + (settings.containerBorderSize * 2)); // Plus the imageÂ´s height and the left and right padding value
 			// Diferences
 			var intDiffW = intCurrentWidth - intWidth;
 			var intDiffH = intCurrentHeight - intHeight;
@@ -262,7 +261,9 @@
 			$('#lightbox-image-details-caption').hide();
 			if ( settings.imageArray[settings.activeImage][1] ) {
 				$('#lightbox-image-details-caption').html(settings.imageArray[settings.activeImage][1]).show();
-				// Änderung Andreas Zeitler: alt-text anzeigen
+			}
+			// Ã„nderung Andreas Zeitler: alt-text anzeigen
+			if ( settings.imageArray[settings.activeImage][2] ) {
 				$('#lightbox-image-details-alt').html(settings.imageArray[settings.activeImage][2]).show();
 			}
 			// If we have a image set, display 'Image X of X'
@@ -277,7 +278,7 @@
 		function _set_navigation() {
 			$('#lightbox-nav').show();
 
-			// Instead to define this configuration in CSS file, we define here. And it´s need to IE. Just.
+			// Instead to define this configuration in CSS file, we define here. And itÂ´s need to IE. Just.
 			$('#lightbox-nav-btnPrev,#lightbox-nav-btnNext').css({ 'background' : 'transparent url(' + settings.imageBlank + ') no-repeat' });
 			
 			// Show the prev button, if not the first image in set
@@ -368,7 +369,7 @@
 			}
 			// Verify the key to show the previous image
 			if ( ( key == settings.keyToPrev ) || ( keycode == 37 ) ) {
-				// If we´re not showing the first image, call the previous
+				// If weÂ´re not showing the first image, call the previous
 				if ( settings.activeImage != 0 ) {
 					settings.activeImage = settings.activeImage - 1;
 					_set_image_to_view();
@@ -377,7 +378,7 @@
 			}
 			// Verify the key to show the next image
 			if ( ( key == settings.keyToNext ) || ( keycode == 39 ) ) {
-				// If we´re not showing the last image, call the next
+				// If weÂ´re not showing the last image, call the next
 				if ( settings.activeImage != ( settings.imageArray.length - 1 ) ) {
 					settings.activeImage = settings.activeImage + 1;
 					_set_image_to_view();

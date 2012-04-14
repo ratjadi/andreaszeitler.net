@@ -1,11 +1,56 @@
-﻿<?php
-// Test change for git
+<?php
+
+// @todo: caption zum alt-text im <img> machen
+
+
 function debug($texto){
 	file_put_contents(TEMPLATEPATH.'/log.log',date('d/m/Y H:i:s').' - '.$texto."\n",FILE_APPEND);
 	//echo date('d/m/Y H:i:s').' - '.$texto."<br>";
 	flush();
 	return;
 }
+
+// Dieser filter zieht direkt nach dem upload
+// Macht dasselbe mit title und caption wie wp_read_image_metadata,
+// nur ohne utf8_encode
+function title_and_caption_not_utf8 ($meta,$file){
+	if ( ! file_exists( $file ) )
+		return false;
+
+	list( , , $sourceImageType ) = getimagesize( $file );
+	$meta = array();
+
+	if ( is_callable( 'iptcparse' ) ) {
+		getimagesize( $file, $info );
+
+		if ( ! empty( $info['APP13'] ) ) {
+			$iptc = iptcparse( $info['APP13'] );
+
+			// headline, "A brief synopsis of the caption."
+			if ( ! empty( $iptc['2#105'][0] ) )
+				$meta['title'] = ( trim( $iptc['2#105'][0] ) );
+			// title, "Many use the Title field to store the filename of the image, though the field may be used in many ways."
+			elseif ( ! empty( $iptc['2#005'][0] ) )
+				$meta['title'] = ( trim( $iptc['2#005'][0] ) );
+
+			if ( ! empty( $iptc['2#120'][0] ) ) { // description / legacy caption
+				$caption = ( trim( $iptc['2#120'][0] ) );
+				if ( empty( $meta['title'] ) ) {
+					// Assume the title is stored in 2:120 if it's short.
+					if ( strlen( $caption ) < 80 )
+						$meta['title'] = $caption;
+					else
+						$meta['caption'] = $caption;
+				} elseif ( $caption != $meta['title'] ) {
+					$meta['caption'] = $caption;
+				}
+			}
+		}
+	}
+	return $meta;
+}
+add_filter('wp_read_image_metadata', 'title_and_caption_not_utf8',10,2);
+
 
 // Change: Andreas Zeitler:
 // subscriber sehen private posts und werden nach dem login sofort auf die startseite anstatt dem dashboard umgeleitet
@@ -105,7 +150,7 @@ add_shortcode('caption', 'az_img_caption_shortcode');
 // WICHTIG: wegen des Filters funktioniert die Designerkennung in LiveWriter nicht, ggf. also den hook deaktivieren
 // Update: Filter wird bei Designerkennung nun automatisch weggelassen, s.u.
 
-function filters_rpc_post( $data , $postarr )
+function filter_rpc_post( $data , $postarr )
 {
 		//return($data); // debug
 	
@@ -157,22 +202,50 @@ function filter_normal_post ( $data , $postarr )
 	$data['post_content'] = preg_replace('/lightbox\[\]/', 'lightbox[1]', $data['post_content']);
 	return ($data);
 }
+//add_filter ( 'wp_insert_post_data' , 'filter_normal_post'); // Das macht Probleme, und wird jetzt durch jquery ersetzt (sh. header.php)
 
-function extract_caption ( $meta, $file, $sourceImageType )
-{
-		//debug(print_r($meta,true));
-		
+
+// Kopiert die caption aus der Bilddatei (von LR) in das alt-text Feld
+// ... das passiert direkt beim upload (danach muss man 'Änderungen speichern' klicken
+function copy_caption_to_alt ($metadata, $attachment_id) {
+	$attachment = get_post( $attachment_id );
+	//debug(print_r($metadata,true));
+	//debug(print_r($attachment,true));
+	$title = $metadata['image_meta']['title'];
+	$caption = $metadata['image_meta']['caption'];
+	
+	if ($title != '' && $caption == '') $caption = $metadata['image_meta']['caption'] = $title;
+	
+	update_post_meta( $attachment_id, '_wp_attachment_image_alt', addslashes($caption) );
+	return $metadata;
 }
+add_filter( 'wp_generate_attachment_metadata', 'copy_caption_to_alt', 10, 2);
 
+// Kopiert die iptc caption aus Lightroom ins richtige Feld für wp, damit dann auch
+// eine caption daraus wird 
+// Und kopiert den titel in caption oder umgekehrt, damit es beides gibt
+// ... das passiert beim 'Änderungen speichern' im Medien Dialog
+// Leider geht das nicht in einem Schritt, weil hier kein Zugriff auf alt-text
 function copy_caption ( $post, $attachment ) 
 {
 	//debug(print_r($post,true));
 	//debug(print_r($attachment,true));
-	if ($post['post_content']!='' && trim($post['post_excerpt'])=='') {
-		$post['post_excerpt'] = $post['post_content'];
+	// post_content entspricht Beschreibung
+	// post_excerpt entspricht Caption (Beschriftung)
+
+	$title = $post['post_title'];
+	$caption = $post['post_content'];
+	
+	if ($title != '' && $caption == '') $caption = $post['post_content'] = $title;
+	if ($title == '' && $caption != '') $title = $$post['post_title'] = $caption;
+	
+	if ($title!='' && trim($post['post_excerpt'])=='') {
+		$post['post_excerpt'] = $caption;
 	}
 	return($post);
 }
+add_filter('attachment_fields_to_save', 'copy_caption',10,2);
+
 
 
 function my_xmlrpc_call ( $req_method ) {
@@ -188,9 +261,6 @@ function my_xmlrpc_call ( $req_method ) {
 	return($req_method);
 }
 
-add_filter ( 'wp_insert_post_data' , 'filter_normal_post');
-//add_filter ( 'wp_read_image_metadata' , 'extract_caption');
-add_filter('attachment_fields_to_save', 'copy_caption');
 
 
 // Filter wird bei live writer request zur Designerkennung automatisch weggelassen
