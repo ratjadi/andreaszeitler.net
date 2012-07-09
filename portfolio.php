@@ -1,4 +1,4 @@
-<?php 
+ï»¿<?php 
 	include "codeheader.php"; 
 	include $incdir . "htmlheader.php"; 
 
@@ -6,18 +6,19 @@
         <script type="text/javascript">
 
         	function azDocumentReady () { 
-			console.log("Start lightbox");
 	        	Galleria.loadTheme('include/galleria/themes/classicfullscreen/galleria.classicfullscreen.js');
-	        	$("#gallery-2 a").click(startGalleria);
+	        	$("#gallery-2 a[nummer]").click(startGalleria);
+			}
+			
+			function azGalleriaFullscreenExitCallback () {
+				//console.log('azGalleriaFullscreenExitCallback');
+				Galleria.unload();
+				$('#fullscreen-gallery').remove();
+				$("#gallery-2 a").click(startGalleria);
 			}
 			
 			Galleria.ready(function(options) {
-				this.bind('fullscreen_exit', function(e) {
-					$('#fullscreen-gallery').remove();
-					$("#gallery-2 a").click(startGalleria);
-				});
 			});
-
 			
 			function startGalleria () {
 			
@@ -31,7 +32,8 @@
 				$("#fullscreen-gallery").galleria({
 					width: 'auto',
 					height: 700,
-					show: bildnummer
+					show: bildnummer,
+					_fullscreenExitCallback: azGalleriaFullscreenExitCallback
 				});
 				return(false);
 			}
@@ -42,6 +44,7 @@
 <div id="container">
 
 <?php
+
 include "header.php";
 echo <<<FLA
 		<a href="index.php">
@@ -95,10 +98,10 @@ FLA;
 														
 														$akt_album = $get_vars['airyal'];
 														$menuAlbum = new airy_album_portfolio_extended('media/lasobras/', 'fla_airy_files/');
-														$menuAlbum->set_size_specs (800, 600, 3); // große Ttoleranz 3: verwende Originalbilder
+														$menuAlbum->set_size_specs (800, 600, 3); // groÃŸe Ttoleranz 3: verwende Originalbilder
 														$menuAlbum->airy_init();
-														$menuAlbum->set_akt_album($akt_album);  //diese 3 Zeilen sind für das airy_album_extended
-														echo $menuAlbum->get_menu($get_vars);   // wobei die erste Verzeichnisebene als Menü dient
+														$menuAlbum->set_akt_album($akt_album);  //diese 3 Zeilen sind fÃ¼r das airy_album_extended
+														echo $menuAlbum->get_menu($get_vars);   // wobei die erste Verzeichnisebene als MenÃ¼ dient
 														$menuAlbum->reset_album();
 										
 										?>							
